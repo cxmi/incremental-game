@@ -136,10 +136,10 @@ public class GameManager : MonoBehaviour
                 //update karma per second
                 bmanager.investment.UpdateKarmaPerSecond(this, (int)InvestmentType.Convert, numberOwned);
                 
-                float newCost = costOfNext[(int)InvestmentType.Convert];
-                Debug.Log(newCost);
+                convertCost = costOfNext[(int)InvestmentType.Convert];
+                //Debug.Log(newCost);
                 
-                convertCost = newCost;
+                //convertCost = newCost;
                 //write out the new cost
                 convertCostText.text = "Cost: " + convertCost.ToString() + " karma";
                 
@@ -147,10 +147,21 @@ public class GameManager : MonoBehaviour
             case "Arm":
                 //wiArmOwned += 1;
                 numberOwned[(int)InvestmentType.Arm] += 1;
+                bmanager.investment.UpdateCost(this, (int)InvestmentType.Arm, numberOwned);
+                bmanager.investment.UpdateKarmaPerSecond(this, (int)InvestmentType.Arm, numberOwned);
+                armCost = costOfNext[(int)InvestmentType.Arm];
+                armCostText.text = "Cost: " + armCost.ToString() + " karma";
+
+                
                 break;
             case "Crucify":
                 //wiCrucifyOwned += 1;
                 numberOwned[(int)InvestmentType.Crucify] += 1;
+                numberOwned[(int)InvestmentType.Crucify] += 1;
+                bmanager.investment.UpdateCost(this, (int)InvestmentType.Crucify, numberOwned);
+                bmanager.investment.UpdateKarmaPerSecond(this, (int)InvestmentType.Crucify, numberOwned);
+                crucifyCost = costOfNext[(int)InvestmentType.Crucify];
+                crucifyCostText.text = "Cost: " + crucifyCost.ToString() + " karma";
                 break;
             default:
                 break;
