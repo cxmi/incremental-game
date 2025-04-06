@@ -7,9 +7,20 @@ public class GameManager : MonoBehaviour
 {
     public float karma;
     public TextMeshProUGUI karmaText;
+    
     public float karmaPerSecond;
     public TextMeshProUGUI karmaPerSecondText;
+    
     public float karmaPerWorshipper;
+    public TextMeshProUGUI karmaPerWorshipperText;
+    
+    public float totalWorshippers;
+    public TextMeshProUGUI totalWorshippersText;
+    public float newWorshippers;
+    
+    public float worshippersPerSecond;
+    public TextMeshProUGUI worshippersPerSecondText;
+    
     
     //Convert variables
     public GameObject wiConvert;
@@ -37,6 +48,8 @@ public class GameManager : MonoBehaviour
     
     public int[] costOfNext;
     public int[] numberOwned;
+
+    private SOManager scriptObjectManager;
     
     //public float wiArmOwned = 0;
     //public GameObject wiCrucify;
@@ -45,9 +58,22 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        //declare starting base costs
+        convertCost = 10f;
+        convertCostText.text = "Cost: " + convertCost.ToString() + " karma";
+        armCost = 105f;
+        armCostText.text = "Cost: " + armCost.ToString() + " karma";
+        crucifyCost = 666f;
+        crucifyCostText.text = "Cost: " + crucifyCost.ToString() + " karma";
+        
+        //update the karma amount every second
         InvokeRepeating("UpdateKarma", 0f, 1f);
+        InvokeRepeating("UpdateWorshippers", 0f, 1f);
 
+        
+        //set karma gen rate per worshipper
         karmaPerWorshipper = 1f;
+        
         //convertCost.text = "testing";
         costOfNext = new int[System.Enum.GetValues(typeof(InvestmentType)).Length];
         numberOwned = new int[System.Enum.GetValues(typeof(InvestmentType)).Length];
@@ -59,6 +85,14 @@ public class GameManager : MonoBehaviour
         
         karmaPerSecondText.text = "Karma per second: " + karmaPerSecond.ToString("N0");
         karmaText.text = "Karma: " + karma.ToString("N0");
+        
+        totalWorshippersText.text = "Worshippers: " + totalWorshippers.ToString("N0");
+        worshippersPerSecondText.text = "Worshippers per second: " + worshippersPerSecond.ToString("N0");
+
+        //worshipp.text = "Worshippers: " + totalWorshippers.ToString("N0");
+
+
+ 
 
         //buy logic
 
@@ -68,6 +102,17 @@ public class GameManager : MonoBehaviour
     void UpdateKarma()
     {
         karma += karmaPerSecond;
+    }
+
+    void UpdateWorshippers()
+    {
+        
+        totalWorshippers += worshippersPerSecond;
+    }
+
+    void BuyWithKarma()
+    {
+        //karma -= costOfNext;
     }
     public void ClickToBuy(Button clickedButton)
     {
@@ -94,8 +139,9 @@ public class GameManager : MonoBehaviour
                 float newCost = costOfNext[(int)InvestmentType.Convert];
                 Debug.Log(newCost);
                 
+                convertCost = newCost;
                 //write out the new cost
-                convertCostText.text = "Cost: " + newCost.ToString() + " karma";
+                convertCostText.text = "Cost: " + convertCost.ToString() + " karma";
                 
                 break;
             case "Arm":

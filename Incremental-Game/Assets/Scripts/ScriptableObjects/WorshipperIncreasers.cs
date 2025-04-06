@@ -21,6 +21,7 @@ public class WorshipperIncreasers : ScriptableObject
     {
         //Debug.Log(owned[enumPlace] * wiWorshippersPerSecond * gm.karmaPerWorshipper);
         //this updates the Karma per second 
+        gm.worshippersPerSecond = owned[enumPlace] * wiWorshippersPerSecond;
         gm.karmaPerSecond = owned[enumPlace] * wiWorshippersPerSecond * gm.karmaPerWorshipper;
     }
 }
