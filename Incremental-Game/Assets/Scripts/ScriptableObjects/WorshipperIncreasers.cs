@@ -9,8 +9,11 @@ public class WorshipperIncreasers : ScriptableObject
     public float wiKarmaCost = 0f;
     public float wiGoldCost = 0f;
 
-    public void UpdateCost(GameManager gm)
+    //pass in (int)InvestmentType.Convert and  int[] numberOwned;
+    public void UpdateCost(GameManager gm, int enumPlace, int[] owned)
     {
-        
+        float costNextFloat = wiKarmaCost * Mathf.Pow(1.08f, owned[enumPlace]);
+        gm.costOfNext[enumPlace] = (int)Mathf.Round(costNextFloat);
+       
     }
 }
