@@ -5,16 +5,27 @@ using UnityEngine.UI;
 
 public class GameManager : MonoBehaviour
 {
-    public GameObject wiConvert;
-    public TextMeshProUGUI convertCost;
-
+    public float karma;
+    public TextMeshProUGUI karmaText;
+    public float karmaPerSecond;
+    public TextMeshProUGUI karmaPerSecondText;
+    public float karmaPerWorshipper;
     
-    public GameObject wiArm;
+    //Convert variables
+    public GameObject wiConvert;
+    public TextMeshProUGUI convertCostText;
+    public float convertCost;
 
-    public TextMeshProUGUI armCost;
+    //Arm Evangelists variables
+    public GameObject wiArm;
+    public TextMeshProUGUI armCostText;
+    public float armCost;
   
+    //Crucify variables
     public float wiCrucifyOwned = 0;
-    public TextMeshProUGUI crucifyCost;
+    public TextMeshProUGUI crucifyCostText;
+    public float crucifyCost;
+    
     public string clickedButtonParent;
 
     public enum InvestmentType
@@ -34,6 +45,9 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        InvokeRepeating("UpdateKarma", 0f, 1f);
+
+        karmaPerWorshipper = 1f;
         //convertCost.text = "testing";
         costOfNext = new int[System.Enum.GetValues(typeof(InvestmentType)).Length];
         numberOwned = new int[System.Enum.GetValues(typeof(InvestmentType)).Length];
@@ -43,8 +57,18 @@ public class GameManager : MonoBehaviour
     void Update()
     {
         
+        karmaPerSecondText.text = "Karma per second: " + karmaPerSecond.ToString("N0");
+        karmaText.text = "Karma: " + karma.ToString("N0");
+
+        //buy logic
+
+        //karmaPerSecond = numberOwned[(int)InvestmentType.Convert];
     }
 
+    void UpdateKarma()
+    {
+        karma += karmaPerSecond;
+    }
     public void ClickToBuy(Button clickedButton)
     {
         //string name = transform.parent.name;
@@ -59,19 +83,19 @@ public class GameManager : MonoBehaviour
                 //wiConvertOwned += 1;
                 numberOwned[(int)InvestmentType.Convert] += 1;
                 
-                if (bmanager == null)
-                {
-                    Debug.Log("No Button manager");
-                }
+                //ideally should check if bmanager is null but whatever
+                
                 // using the int value for Convert in the enum, use UpdateCost() function in scriptable object
                 bmanager.investment.UpdateCost(this, (int)InvestmentType.Convert, numberOwned);
-                //ignore this since it updates the scriptableobject cost value permanently
-                //bmanager.investment.wiKarmaCost = costOfNext[(int)InvestmentType.Convert];
+                
+                //update karma per second
+                bmanager.investment.UpdateKarmaPerSecond(this, (int)InvestmentType.Convert, numberOwned);
                 
                 float newCost = costOfNext[(int)InvestmentType.Convert];
                 Debug.Log(newCost);
                 
-                convertCost.text = "Cost: " + newCost.ToString() + " karma";
+                //write out the new cost
+                convertCostText.text = "Cost: " + newCost.ToString() + " karma";
                 
                 break;
             case "Arm":
@@ -87,6 +111,10 @@ public class GameManager : MonoBehaviour
         }
     }
 
+    public void DoGood()
+    {
+        karma += 1;
+    }
     // public void DetermineButton(Button clickedButton)
     // {
     //     clickedButtonParent = clickedButton.transform.parent.name;

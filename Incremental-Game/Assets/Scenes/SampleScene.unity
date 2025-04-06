@@ -3071,7 +3071,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 539, y: -35.396183}
+  m_AnchoredPosition: {x: 539, y: -35.39624}
   m_SizeDelta: {x: 195.2532, y: -112.1955}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &906701825
@@ -3566,7 +3566,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 1}
-  m_AnchoredPosition: {x: 326, y: -35.396183}
+  m_AnchoredPosition: {x: 326, y: -35.39624}
   m_SizeDelta: {x: 195.2532, y: -112.1955}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1144785667
@@ -3651,6 +3651,10 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 3320203762358396102, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+      propertyPath: investment
+      value: 
+      objectReference: {fileID: 11400000, guid: a909dfa57ffe34be7947359662b01a6b, type: 2}
     - target: {fileID: 6062140822864436168, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4157,6 +4161,10 @@ PrefabInstance:
 
 '
       objectReference: {fileID: 0}
+    - target: {fileID: 3320203762358396102, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+      propertyPath: investment
+      value: 
+      objectReference: {fileID: 11400000, guid: 22c502c700c0a45bc94e990bcd6d1d6c, type: 2}
     - target: {fileID: 6062140822864436168, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4925,7 +4933,7 @@ RectTransform:
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
   m_AnchoredPosition: {x: 0, y: 0}
-  m_SizeDelta: {x: 200, y: 30}
+  m_SizeDelta: {x: 900, y: 30}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1780089984
 MonoBehaviour:
@@ -5584,12 +5592,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: a2b3141c14ca947ac985d521ae7a053e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  karma: 0
+  karmaText: {fileID: 1780089984}
+  karmaPerSecond: 0
+  karmaPerSecondText: {fileID: 255482798}
+  karmaPerWorshipper: 0
   wiConvert: {fileID: 205899620}
-  convertCost: {fileID: 912203025}
+  convertCostText: {fileID: 912203025}
+  convertCost: 0
   wiArm: {fileID: 315728556}
-  armCost: {fileID: 1589710283}
+  armCostText: {fileID: 1589710283}
+  armCost: 0
   wiCrucifyOwned: 0
-  crucifyCost: {fileID: 1034497136}
+  crucifyCostText: {fileID: 1034497136}
+  crucifyCost: 0
   clickedButtonParent: 
   costOfNext: 
   numberOwned: 
@@ -5884,6 +5900,10 @@ PrefabInstance:
       propertyPath: m_Name
       value: CrucifyCost
       objectReference: {fileID: 0}
+    - target: {fileID: 3320203762358396102, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+      propertyPath: investment
+      value: 
+      objectReference: {fileID: 11400000, guid: 310b385c9de154a8098cd932807fc13e, type: 2}
     - target: {fileID: 6062140822864436168, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
