@@ -15,6 +15,10 @@ public class SOManager : MonoBehaviour
     public WorshipperIncreasers scObCrucify;
     public TextMeshProUGUI crucifyTitle;
     public TextMeshProUGUI crucifyDescription;
+
+    public WorshipperIncreasers scObMegachurch;
+    public TextMeshProUGUI megachurchTitle;
+    public TextMeshProUGUI megachurchDescription;
     
     public WorshipperIncreasers scObHoly;
     public TextMeshProUGUI holyTitle;
@@ -23,6 +27,7 @@ public class SOManager : MonoBehaviour
     public WorshipperIncreasers scCrusade;
     public TextMeshProUGUI crusadeTitle;
     public TextMeshProUGUI crusadeDescription;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -35,6 +40,9 @@ public class SOManager : MonoBehaviour
         
         crucifyTitle.text = scObCrucify.wiName;
         crucifyDescription.text = scObCrucify.wiDescription;
+        
+        megachurchTitle.text = scObMegachurch.wiName;
+        megachurchDescription.text = scObMegachurch.wiDescription;
 
 
     }
