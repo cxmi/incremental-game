@@ -8,4 +8,9 @@ public class WorshipperIncreasers : ScriptableObject
     public float wiWorshippersPerSecond = 0f;
     public float wiKarmaCost = 0f;
     public float wiGoldCost = 0f;
+
+    public void UpdateCost(GameManager gm)
+    {
+        
+    }
 }
