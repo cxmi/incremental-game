@@ -51,21 +51,28 @@ public class GameManager : MonoBehaviour
         clickedButtonParent = clickedButton.transform.parent.name;
         string name = clickedButtonParent;
         //Debug.Log(name);
-
+        //get the button manager attached to the button
+        ButtonManager bmanager = clickedButton.GetComponent<ButtonManager>();
         switch (name)
         {
             case "Convert":
                 //wiConvertOwned += 1;
                 numberOwned[(int)InvestmentType.Convert] += 1;
-                ButtonManager bmanager = clickedButton.GetComponent<ButtonManager>();
+                
                 if (bmanager == null)
                 {
                     Debug.Log("No Button manager");
                 }
+                // using the int value for Convert in the enum, use UpdateCost() function in scriptable object
                 bmanager.investment.UpdateCost(this, (int)InvestmentType.Convert, numberOwned);
+                //ignore this since it updates the scriptableobject cost value permanently
                 //bmanager.investment.wiKarmaCost = costOfNext[(int)InvestmentType.Convert];
+                
                 float newCost = costOfNext[(int)InvestmentType.Convert];
                 Debug.Log(newCost);
+                
+                convertCost.text = "Cost: " + newCost.ToString() + " karma";
+                
                 break;
             case "Arm":
                 //wiArmOwned += 1;
