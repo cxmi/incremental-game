@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: SellIndulgences
   m_EditorClassIdentifier: 
   giName: Sell Indulgences
-  giDescription: +2 gold / sec from worshippers
-  giGoldPerSecond: 1
-  giKarmaCost: 2000
+  giDescription: Gain 2 gold/s per worshipper
+  giGoldPerSecond: 2
+  giKarmaCost: 10000

@@ -13,6 +13,6 @@ MonoBehaviour:
   m_Name: TitheFollowers
   m_EditorClassIdentifier: 
   giName: Tithe Followers
-  giDescription: +1 gold / sec from worshippers
+  giDescription: Gain 1 gold/s per worshipper
   giGoldPerSecond: 1
-  giKarmaCost: 10000
+  giKarmaCost: 2000
