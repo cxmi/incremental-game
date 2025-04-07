@@ -64,6 +64,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public int[] goldCostOfNext;
 
     private SOManager scriptObjectManager;
+    private GameObject scriptObjectGameObject;
     
     //public float wiArmOwned = 0;
     //public GameObject wiCrucify;
@@ -72,7 +73,8 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        scriptObjectManager = GetComponent<SOManager>();
+        scriptObjectGameObject = GameObject.Find("ScriptObjectHandler");
+        scriptObjectManager = scriptObjectGameObject.GetComponent<SOManager>();
         //declare starting base costs
         convertCost = scriptObjectManager.scObConvert.wiKarmaCost; 
         convertCostText.text = "Cost: " + convertCost.ToString() + " karma";
@@ -217,10 +219,7 @@ public class GameManager : MonoBehaviour
         karma += 1;
     }
 
-    public void StartReligion()
-    {
-        //set everything to active
-    }
+ 
     
     
     // public void DetermineButton(Button clickedButton)

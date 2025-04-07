@@ -3,7 +3,8 @@ using UnityEngine.UI;
 
 public class ActiveUIManager : MonoBehaviour
 {
-    [HideInInspector] public Button startReligion;
+    private bool religionFounded = false;
+    public GameObject startReligion;
     [HideInInspector] public GameObject worshipperStats;
     [HideInInspector] public GameObject goldStats;
     [HideInInspector] public GameObject worshipperPanel;
@@ -14,6 +15,7 @@ public class ActiveUIManager : MonoBehaviour
     public GameObject goldPanel;
     //public GameObject tithePrefab;
     //public GameObject indulgencesPrefab;
+    private GameObject gameManagerHolder;
     private GameManager gm;
     private Button convertButton;
     private Button armButton;
@@ -23,7 +25,8 @@ public class ActiveUIManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        gm = GetComponent<GameManager>();
+        gameManagerHolder = GameObject.Find("GameManagerHolder");
+        gm = gameManagerHolder.GetComponent<GameManager>();
 
         convertButton = convertPrefab.GetComponentInChildren<Button>();
         armButton = armPrefab.GetComponentInChildren<Button>();
@@ -36,6 +39,34 @@ public class ActiveUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //PANEL HIDE LOGIC
+        
+        //hide start religion until karma reaches 5
+        if (gm.karma >= 5 && !religionFounded)
+        {
+            startReligion.SetActive(true);
+        }
+        else
+        {
+            startReligion.SetActive(false);
+        }
+        
+        //hide panels until religion is founded
+        if (!religionFounded)
+        {
+            worshipperStats.SetActive(false);
+            goldStats.SetActive(false);
+            worshipperPanel.SetActive(false);
+            goldPanel.SetActive(false);
+
+        }
+        else
+        {
+            worshipperStats.SetActive(true);
+            worshipperPanel.SetActive(true);
+        }
+        
+        
         //Button Activation Logic
         
         //convert
@@ -83,5 +114,10 @@ public class ActiveUIManager : MonoBehaviour
         
         
         
+    }
+    public void StartReligion()
+    {
+        religionFounded = true;
+        startReligion.SetActive(false);
     }
 }
