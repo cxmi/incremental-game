@@ -44,10 +44,20 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float crucifyCost;
     
     //megachurch variables
-    
     public TextMeshProUGUI megachurchCostText;
     [HideInInspector] public float megachurchCost;
     [HideInInspector] public float megachurchGold;
+    
+    //Tithe variables
+    public TextMeshProUGUI titheText;
+    public float titheCost;
+    public float titheGoldAddition;
+    
+    //Indulgence variables
+    public TextMeshProUGUI indulgenceText;
+    public float indulgenceCost;
+    public float indulgenceGoldAddition;
+
     
     [HideInInspector] public string clickedButtonParent;
 
@@ -56,7 +66,9 @@ public class GameManager : MonoBehaviour
         Convert,
         Arm,
         Crucify,
-        Megachurch
+        Megachurch,
+        Tithe,
+        Indulgence
     }
     
     [HideInInspector] public int[] costOfNext;
@@ -75,21 +87,33 @@ public class GameManager : MonoBehaviour
     {
         scriptObjectGameObject = GameObject.Find("ScriptObjectHandler");
         scriptObjectManager = scriptObjectGameObject.GetComponent<SOManager>();
+        
         //declare starting base costs
         convertCost = scriptObjectManager.scObConvert.wiKarmaCost; 
         convertCostText.text = "Cost: " + convertCost.ToString() + " karma";
+        
         armCost = scriptObjectManager.scObArm.wiKarmaCost;
         armCostText.text = "Cost: " + armCost.ToString() + " karma";
+        
         crucifyCost = scriptObjectManager.scObCrucify.wiKarmaCost;
         crucifyCostText.text = "Cost: " + crucifyCost.ToString() + " karma";
         
         megachurchCost = scriptObjectManager.scObMegachurch.wiKarmaCost;
         megachurchGold = scriptObjectManager.scObMegachurch.wiGoldCost;
         megachurchCostText.text = "Cost: " + megachurchCost.ToString() + " karma & " + megachurchGold.ToString() + " gold";
+
+        titheCost = scriptObjectManager.scTithe.wiKarmaCost;
+        titheGoldAddition = scriptObjectManager.scTithe.goldPerPurchase;
+        titheText.text = "Cost: " + titheCost.ToString() + " karma";
+        
+        indulgenceCost = scriptObjectManager.scIndulgence.wiKarmaCost;
+        indulgenceGoldAddition = scriptObjectManager.scIndulgence.goldPerPurchase;
+        indulgenceText.text = "Cost: " + indulgenceCost.ToString() + " karma";
         
         //update the karma amount every second
         InvokeRepeating("UpdateKarma", 0f, 1f);
         InvokeRepeating("UpdateWorshippers", 0f, 1f);
+        InvokeRepeating("UpdateGold", 0f, 1f);
 
         
         //set karma gen rate per worshipper
@@ -111,6 +135,10 @@ public class GameManager : MonoBehaviour
         
         totalWorshippersText.text = "Worshippers: " + totalWorshippers.ToString("N0");
         worshippersPerSecondText.text = "Worshippers per second: " + worshippersPerSecond.ToString("N0");
+        
+        goldText.text = "Gold: " + gold.ToString("N0");
+        goldPerWorshipperText.text = "Gold per worshipper: " + goldPerWorshipper.ToString("N0");
+        goldPerSecondText.text = "Gold per second: " + goldPerSecond.ToString("N0");
 
         //worshipp.text = "Worshippers: " + totalWorshippers.ToString("N0");
 
@@ -126,6 +154,11 @@ public class GameManager : MonoBehaviour
     void UpdateKarma()
     {
         karma += karmaPerSecond;
+    }
+
+    void UpdateGold()
+    {
+        gold += goldPerSecond;
     }
 
     void UpdateWorshippers()
@@ -208,6 +241,29 @@ public class GameManager : MonoBehaviour
                 megachurchGold = goldCostOfNext[(int)InvestmentType.Megachurch];
                 megachurchCostText.text = "Cost: " + megachurchCost.ToString() + 
                                           " karma & " + megachurchGold.ToString() + " gold";
+                break;
+            case "Tithe":
+                karma -= titheCost;
+                numberOwned[(int)InvestmentType.Tithe] += 1;
+                bmanager.investment.UpdateCostGoldGenerator(this, (int)InvestmentType.Tithe, numberOwned);
+                bmanager.investment.UpdateGoldTotal(this, (int)InvestmentType.Tithe, numberOwned);
+
+                titheCost = costOfNext[(int)InvestmentType.Tithe];
+                //goldPerWorshipper = 
+                titheText.text = "Cost: " + titheCost.ToString() + " karma";
+
+
+                break;
+            case "Indulgence":
+                karma -= indulgenceCost;
+                numberOwned[(int)InvestmentType.Indulgence] += 1;
+                bmanager.investment.UpdateCostGoldGenerator(this, (int)InvestmentType.Indulgence, numberOwned);
+                bmanager.investment.UpdateGoldTotal(this, (int)InvestmentType.Indulgence, numberOwned);
+
+                indulgenceCost = costOfNext[(int)InvestmentType.Indulgence];
+                indulgenceText.text = "Cost: " + indulgenceCost.ToString() + " karma";
+
+
                 break;
             default:
                 break;

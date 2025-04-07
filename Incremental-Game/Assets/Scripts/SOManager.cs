@@ -28,13 +28,13 @@ public class SOManager : MonoBehaviour
     public TextMeshProUGUI crusadeTitle;
     public TextMeshProUGUI crusadeDescription;
     
-    [HideInInspector] public GoldIncreasers scTithe;
-    [HideInInspector] public TextMeshProUGUI titheTitle;
-    [HideInInspector] public TextMeshProUGUI titheDescription;
+    public WorshipperIncreasers scTithe;
+    public TextMeshProUGUI titheTitle;
+    public TextMeshProUGUI titheDescription;
     
-    [HideInInspector] public GoldIncreasers scIndulgence;
-    [HideInInspector] public TextMeshProUGUI indulgenceTitle;
-    [HideInInspector] public TextMeshProUGUI indulgenceDescription;
+    public WorshipperIncreasers scIndulgence;
+    public TextMeshProUGUI indulgenceTitle;
+    public TextMeshProUGUI indulgenceDescription;
     
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -52,11 +52,11 @@ public class SOManager : MonoBehaviour
         megachurchTitle.text = scObMegachurch.wiName;
         megachurchDescription.text = scObMegachurch.wiDescription;
 
-        titheTitle.text = scTithe.giName;
-        titheDescription.text = scTithe.giDescription;
+        titheTitle.text = scTithe.wiName;
+        titheDescription.text = scTithe.wiDescription;
         
-        indulgenceTitle.text = scIndulgence.giName;
-        indulgenceDescription.text = scIndulgence.giDescription;
+        indulgenceTitle.text = scIndulgence.wiName;
+        indulgenceDescription.text = scIndulgence.wiDescription;
         
 
 

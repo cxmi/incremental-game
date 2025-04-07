@@ -13,6 +13,8 @@ public class ActiveUIManager : MonoBehaviour
     [HideInInspector] public GameObject armPrefab;
     [HideInInspector] public GameObject crucifyPrefab;
     public GameObject megachurchPrefab;
+    public GameObject tithePrefab;
+    public GameObject indulgencePrefab;
     public GameObject goldPanel;
     //public GameObject tithePrefab;
     //public GameObject indulgencesPrefab;
@@ -95,6 +97,7 @@ public class ActiveUIManager : MonoBehaviour
             armPrefab.SetActive(false);
         }
         
+        
         if (gm.numberOwned[(int)GameManager.InvestmentType.Arm] > 1 
             || gm.karma >= gm.crucifyCost 
             || seenCrucify)
@@ -107,17 +110,27 @@ public class ActiveUIManager : MonoBehaviour
             crucifyPrefab.SetActive(false);
         }
         
-        if (gm.numberOwned[(int)GameManager.InvestmentType.Crucify] > 1 
+        //show megachurch and reveal gold panel
+        if (gm.numberOwned[(int)GameManager.InvestmentType.Crucify] > 0 
             || gm.karma >= gm.megachurchCost
             || seenMegachurch)
         {
             megachurchPrefab.SetActive(true);
             seenMegachurch = true;
+            goldPanel.SetActive(true);
         }
         else
         {
             megachurchPrefab.SetActive(false);
+            //uncomment below when NOT testing
+            
+            //goldPanel.SetActive(false);
         }
+        
+        
+
+        
+  
         
         //----------BUTTON ACTIVATION LOGIC----------
         

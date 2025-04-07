@@ -293,6 +293,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Indulgences
       objectReference: {fileID: 0}
+    - target: {fileID: 3320203762358396102, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+      propertyPath: investment
+      value: 
+      objectReference: {fileID: 11400000, guid: 4c8927edd24174fdaa9481fa7d845700, type: 2}
     - target: {fileID: 6062140822864436168, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -1871,6 +1875,8 @@ MonoBehaviour:
   armPrefab: {fileID: 315728556}
   crucifyPrefab: {fileID: 1572026149}
   megachurchPrefab: {fileID: 515798242}
+  tithePrefab: {fileID: 0}
+  indulgencePrefab: {fileID: 0}
   goldPanel: {fileID: 906701823}
 --- !u!4 &331118797
 Transform:
@@ -4526,6 +4532,10 @@ PrefabInstance:
       propertyPath: m_text
       value: Tithe followers
       objectReference: {fileID: 0}
+    - target: {fileID: 3320203762358396102, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+      propertyPath: investment
+      value: 
+      objectReference: {fileID: 11400000, guid: 71cd03a81048340ebae2d9513d99250c, type: 2}
     - target: {fileID: 6062140822864436168, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
       propertyPath: m_AnchorMax.y
       value: 0
@@ -4716,6 +4726,17 @@ RectTransform:
   m_CorrespondingSourceObject: {fileID: 8841310863970576872, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
   m_PrefabInstance: {fileID: 1329647794}
   m_PrefabAsset: {fileID: 0}
+--- !u!114 &1374700153 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2353207203362590580, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+  m_PrefabInstance: {fileID: 43102542}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1417911413
 GameObject:
   m_ObjectHideFlags: 0
@@ -4928,10 +4949,10 @@ MonoBehaviour:
   scCrusade: {fileID: 11400000, guid: 77a8a50af47994f8c98103d23a5ef107, type: 2}
   crusadeTitle: {fileID: 0}
   crusadeDescription: {fileID: 0}
-  scTithe: {fileID: 11400000, guid: da14ba65cbb6347f9878021fd9ba86dd, type: 2}
+  scTithe: {fileID: 11400000, guid: 71cd03a81048340ebae2d9513d99250c, type: 2}
   titheTitle: {fileID: 1179247697}
   titheDescription: {fileID: 1982527314}
-  scIndulgence: {fileID: 11400000, guid: e32053797f195463e9c165543a13819a, type: 2}
+  scIndulgence: {fileID: 11400000, guid: 4c8927edd24174fdaa9481fa7d845700, type: 2}
   indulgenceTitle: {fileID: 43102546}
   indulgenceDescription: {fileID: 43102545}
 --- !u!4 &1564122063
@@ -5176,6 +5197,17 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634714486}
   m_CullTransparentMesh: 1
+--- !u!114 &1670285781 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2353207203362590580, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+  m_PrefabInstance: {fileID: 1329647794}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &1769301059
 GameObject:
   m_ObjectHideFlags: 0
@@ -6107,6 +6139,12 @@ MonoBehaviour:
   megachurchCostText: {fileID: 391938524}
   megachurchCost: 0
   megachurchGold: 0
+  titheText: {fileID: 1670285781}
+  titheCost: 0
+  titheGoldAddition: 0
+  indulgenceText: {fileID: 1374700153}
+  indulgenceCost: 0
+  indulgenceGoldAddition: 0
   clickedButtonParent: 
   costOfNext: 
   numberOwned: 
