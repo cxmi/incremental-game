@@ -8,46 +8,60 @@ public class GameManager : MonoBehaviour
     public float karma;
     public TextMeshProUGUI karmaText;
     
-    public float karmaPerSecond;
+    [HideInInspector] public float karmaPerSecond;
     public TextMeshProUGUI karmaPerSecondText;
     
-    public float karmaPerWorshipper;
+    [HideInInspector] public float karmaPerWorshipper;
     public TextMeshProUGUI karmaPerWorshipperText;
     
-    public float totalWorshippers;
+    [HideInInspector] public float totalWorshippers;
     public TextMeshProUGUI totalWorshippersText;
-    public float newWorshippers;
+    //public float newWorshippers;
     
     public float worshippersPerSecond;
     public TextMeshProUGUI worshippersPerSecondText;
-    
+
+    public float gold;
+    [HideInInspector] public float goldPerWorshipper;
+    [HideInInspector] public float goldPerSecond;
+    public TextMeshProUGUI goldText;
+    public TextMeshProUGUI goldPerWorshipperText;
+    public TextMeshProUGUI goldPerSecondText;
     
     //Convert variables
-    public GameObject wiConvert;
+    //public GameObject wiConvert;
     public TextMeshProUGUI convertCostText;
-    public float convertCost;
+    [HideInInspector] public float convertCost;
 
     //Arm Evangelists variables
-    public GameObject wiArm;
+    //public GameObject wiArm;
     public TextMeshProUGUI armCostText;
-    public float armCost;
+    [HideInInspector] public float armCost;
   
     //Crucify variables
-    public float wiCrucifyOwned = 0;
+    //public float wiCrucifyOwned = 0;
     public TextMeshProUGUI crucifyCostText;
-    public float crucifyCost;
+    [HideInInspector] public float crucifyCost;
     
-    public string clickedButtonParent;
+    //megachurch variables
+    
+    public TextMeshProUGUI megachurchCostText;
+    [HideInInspector] public float megachurchCost;
+    [HideInInspector] public float megachurchGold;
+    
+    [HideInInspector] public string clickedButtonParent;
 
-    public enum InvestmentType
+    [HideInInspector] public enum InvestmentType
     {
         Convert,
         Arm,
-        Crucify
+        Crucify,
+        Megachurch
     }
     
-    public int[] costOfNext;
-    public int[] numberOwned;
+    [HideInInspector] public int[] costOfNext;
+    [HideInInspector] public int[] numberOwned;
+    [HideInInspector] public int[] goldCostOfNext;
 
     private SOManager scriptObjectManager;
     
@@ -58,13 +72,18 @@ public class GameManager : MonoBehaviour
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
+        scriptObjectManager = GetComponent<SOManager>();
         //declare starting base costs
-        convertCost = 10f;
+        convertCost = scriptObjectManager.scObConvert.wiKarmaCost; 
         convertCostText.text = "Cost: " + convertCost.ToString() + " karma";
-        armCost = 105f;
+        armCost = scriptObjectManager.scObArm.wiKarmaCost;
         armCostText.text = "Cost: " + armCost.ToString() + " karma";
-        crucifyCost = 666f;
+        crucifyCost = scriptObjectManager.scObCrucify.wiKarmaCost;
         crucifyCostText.text = "Cost: " + crucifyCost.ToString() + " karma";
+        
+        megachurchCost = scriptObjectManager.scObMegachurch.wiKarmaCost;
+        megachurchGold = scriptObjectManager.scObMegachurch.wiGoldCost;
+        megachurchCostText.text = "Cost: " + megachurchCost.ToString() + " karma & " + megachurchGold.ToString() + " gold";
         
         //update the karma amount every second
         InvokeRepeating("UpdateKarma", 0f, 1f);
@@ -77,6 +96,8 @@ public class GameManager : MonoBehaviour
         //convertCost.text = "testing";
         costOfNext = new int[System.Enum.GetValues(typeof(InvestmentType)).Length];
         numberOwned = new int[System.Enum.GetValues(typeof(InvestmentType)).Length];
+        goldCostOfNext = new int[System.Enum.GetValues(typeof(InvestmentType)).Length];
+
     }
 
     // Update is called once per frame
@@ -165,11 +186,26 @@ public class GameManager : MonoBehaviour
                 //wiCrucifyOwned += 1;
                 karma -= crucifyCost;
                 numberOwned[(int)InvestmentType.Crucify] += 1;
-                numberOwned[(int)InvestmentType.Crucify] += 1;
+                //numberOwned[(int)InvestmentType.Crucify] += 1;
                 bmanager.investment.UpdateCost(this, (int)InvestmentType.Crucify, numberOwned);
                 bmanager.investment.UpdateKarmaPerSecond(this, (int)InvestmentType.Crucify, numberOwned);
                 crucifyCost = costOfNext[(int)InvestmentType.Crucify];
                 crucifyCostText.text = "Cost: " + crucifyCost.ToString() + " karma";
+                break;
+            
+            case "Megachurch":
+                //wiCrucifyOwned += 1;
+                karma -= megachurchCost;
+                numberOwned[(int)InvestmentType.Megachurch] += 1;
+                bmanager.investment.UpdateCost(this, (int)InvestmentType.Megachurch, numberOwned);
+                bmanager.investment.UpdateGold(this, (int)InvestmentType.Megachurch, numberOwned);
+
+                bmanager.investment.UpdateKarmaPerSecond(this, (int)InvestmentType.Megachurch, numberOwned);
+                
+                megachurchCost = costOfNext[(int)InvestmentType.Megachurch];
+                megachurchGold = goldCostOfNext[(int)InvestmentType.Megachurch];
+                megachurchCostText.text = "Cost: " + megachurchCost.ToString() + 
+                                          " karma & " + megachurchGold.ToString() + " gold";
                 break;
             default:
                 break;

@@ -4,21 +4,21 @@ using UnityEngine;
 public class SOManager : MonoBehaviour
 {
     
-    public WorshipperIncreasers scObConvert;
-    public TextMeshProUGUI convertTitle;
-    public TextMeshProUGUI convertDescription;
+    [HideInInspector] public WorshipperIncreasers scObConvert;
+    [HideInInspector] public TextMeshProUGUI convertTitle;
+    [HideInInspector] public TextMeshProUGUI convertDescription;
     
-    public WorshipperIncreasers scObArm;
-    public TextMeshProUGUI armTitle;
-    public TextMeshProUGUI armDescription;
+    [HideInInspector] public WorshipperIncreasers scObArm;
+    [HideInInspector] public TextMeshProUGUI armTitle;
+    [HideInInspector] public TextMeshProUGUI armDescription;
     
-    public WorshipperIncreasers scObCrucify;
-    public TextMeshProUGUI crucifyTitle;
-    public TextMeshProUGUI crucifyDescription;
+    [HideInInspector] public WorshipperIncreasers scObCrucify;
+    [HideInInspector] public TextMeshProUGUI crucifyTitle;
+    [HideInInspector] public TextMeshProUGUI crucifyDescription;
 
-    public WorshipperIncreasers scObMegachurch;
-    public TextMeshProUGUI megachurchTitle;
-    public TextMeshProUGUI megachurchDescription;
+    [HideInInspector] public WorshipperIncreasers scObMegachurch;
+    [HideInInspector] public TextMeshProUGUI megachurchTitle;
+    [HideInInspector] public TextMeshProUGUI megachurchDescription;
     
     public WorshipperIncreasers scObHoly;
     public TextMeshProUGUI holyTitle;

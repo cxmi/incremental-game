@@ -16,7 +16,15 @@ public class WorshipperIncreasers : ScriptableObject
         gm.costOfNext[enumPlace] = (int)Mathf.Round(costNextFloat);
        
     }
-
+    
+    //gold cost
+    public void UpdateGold(GameManager gm, int enumPlace, int[] owned)
+    {
+        float goldNextFloat = wiGoldCost * Mathf.Pow(1.11f, owned[enumPlace]);
+        gm.goldCostOfNext[enumPlace] = (int)Mathf.Round(goldNextFloat);
+       
+    }
+    
     public void UpdateKarmaPerSecond(GameManager gm, int enumPlace, int[] owned)
     {
         //Debug.Log(owned[enumPlace] * wiWorshippersPerSecond * gm.karmaPerWorshipper);
