@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class ActiveUIManager : MonoBehaviour
 {
     private bool religionFounded = false;
+    
     public GameObject startReligion;
     [HideInInspector] public GameObject worshipperStats;
     [HideInInspector] public GameObject goldStats;
