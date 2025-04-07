@@ -28,6 +28,14 @@ public class SOManager : MonoBehaviour
     public TextMeshProUGUI crusadeTitle;
     public TextMeshProUGUI crusadeDescription;
     
+    public GoldIncreasers scTithe;
+    public TextMeshProUGUI titheTitle;
+    public TextMeshProUGUI titheDescription;
+    
+    public GoldIncreasers scIndulgence;
+    public TextMeshProUGUI indulgenceTitle;
+    public TextMeshProUGUI indulgenceDescription;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()

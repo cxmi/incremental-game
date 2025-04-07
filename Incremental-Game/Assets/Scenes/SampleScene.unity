@@ -2556,6 +2556,12 @@ PrefabInstance:
       propertyPath: m_text
       value: 'Cost: 0 karma  & 0 gold'
       objectReference: {fileID: 0}
+    - target: {fileID: 2679859429053427270, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+      propertyPath: m_text
+      value: 'Megachurch
+
+'
+      objectReference: {fileID: 0}
     - target: {fileID: 3320203762358396102, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
       propertyPath: investment
       value: 

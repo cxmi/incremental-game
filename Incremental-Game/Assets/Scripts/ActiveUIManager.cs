@@ -17,29 +17,41 @@ public class ActiveUIManager : MonoBehaviour
     //public GameObject indulgencesPrefab;
     private GameObject gameManagerHolder;
     private GameManager gm;
+    
+    private SOManager scriptObjectManager;
+    private GameObject scriptObjectGameObject;
+    
     private Button convertButton;
     private Button armButton;
     private Button crucifyButton;
     private Button megachurchButton;
+    
+    private bool seenArm = false;
+    private bool seenCrucify = false;
+    private bool seenMegachurch = false;
+
     
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
         gameManagerHolder = GameObject.Find("GameManagerHolder");
         gm = gameManagerHolder.GetComponent<GameManager>();
+        
+        scriptObjectGameObject = GameObject.Find("ScriptObjectHandler");
+        scriptObjectManager = scriptObjectGameObject.GetComponent<SOManager>();
 
         convertButton = convertPrefab.GetComponentInChildren<Button>();
         armButton = armPrefab.GetComponentInChildren<Button>();
         crucifyButton = crucifyPrefab.GetComponentInChildren<Button>();
         megachurchButton = megachurchPrefab.GetComponentInChildren<Button>();
 
-
+        
     }
 
     // Update is called once per frame
     void Update()
     {
-        //PANEL HIDE LOGIC
+        //---------PANEL HIDE LOGIC----------
         
         //hide start religion until karma reaches 5
         if (gm.karma >= 5 && !religionFounded)
@@ -51,23 +63,62 @@ public class ActiveUIManager : MonoBehaviour
             startReligion.SetActive(false);
         }
         
-        //hide panels until religion is founded
-        if (!religionFounded)
+        //HIDE panels until religion is founded
+        //TODO: uncomment this once ready to go live
+        //
+        
+        // if (!religionFounded)
+        // {
+        //     worshipperStats.SetActive(false);
+        //     goldStats.SetActive(false);
+        //     worshipperPanel.SetActive(false);
+        //     goldPanel.SetActive(false);
+        //
+        // }
+        // else
+        // {
+        //     worshipperStats.SetActive(true);
+        //     worshipperPanel.SetActive(true);
+        // }
+        
+        //end TODO
+        
+        //------------GATING LOGIC-----------
+        if (gm.numberOwned[(int)GameManager.InvestmentType.Convert] > 1 || seenArm)
         {
-            worshipperStats.SetActive(false);
-            goldStats.SetActive(false);
-            worshipperPanel.SetActive(false);
-            goldPanel.SetActive(false);
-
+            armPrefab.SetActive(true);
+            seenArm = true;
         }
         else
         {
-            worshipperStats.SetActive(true);
-            worshipperPanel.SetActive(true);
+            armPrefab.SetActive(false);
         }
         
+        if (gm.numberOwned[(int)GameManager.InvestmentType.Arm] > 1 
+            || gm.karma >= gm.crucifyCost 
+            || seenCrucify)
+        {
+            crucifyPrefab.SetActive(true);
+            seenCrucify = true;
+        }
+        else
+        {
+            crucifyPrefab.SetActive(false);
+        }
         
-        //Button Activation Logic
+        if (gm.numberOwned[(int)GameManager.InvestmentType.Crucify] > 1 
+            || gm.karma >= gm.megachurchCost
+            || seenMegachurch)
+        {
+            megachurchPrefab.SetActive(true);
+            seenMegachurch = true;
+        }
+        else
+        {
+            megachurchPrefab.SetActive(false);
+        }
+        
+        //----------BUTTON ACTIVATION LOGIC----------
         
         //convert
         if (gm.karma < gm.convertCost)
