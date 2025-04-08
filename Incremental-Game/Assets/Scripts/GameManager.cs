@@ -57,7 +57,32 @@ public class GameManager : MonoBehaviour
     public TextMeshProUGUI indulgenceText;
     public float indulgenceCost;
     public float indulgenceGoldAddition;
-
+    
+    //Tax variables
+    public TextMeshProUGUI taxText;
+    public float taxCost;
+    
+    //Extort variables
+    public TextMeshProUGUI extortText;
+    public float extortCost;
+    
+    //Annex variables
+    public TextMeshProUGUI annexText;
+    public float annexCost;
+    public float annexGoldCost;
+    
+    //Crusade variables
+    public TextMeshProUGUI crusadeText;
+    public float crusadeCost;
+    public float crusadeGoldCost;
+    
+    //Execute variables
+    public TextMeshProUGUI executeText;
+    public float executeCost;
+    
+    //Martyr variables
+    public TextMeshProUGUI martyrText;
+    public float martyrCost;
     
     [HideInInspector] public string clickedButtonParent;
 

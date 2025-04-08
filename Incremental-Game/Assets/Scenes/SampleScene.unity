@@ -991,7 +991,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 2679859429053427270, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
       propertyPath: m_text
-      value: Holy War
+      value: Declare Holy war
       objectReference: {fileID: 0}
     - target: {fileID: 3320203762358396102, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
       propertyPath: investment
@@ -1028,6 +1028,10 @@ PrefabInstance:
     - target: {fileID: 6304206969400022176, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
       propertyPath: m_AnchoredPosition.y
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6359687248745867323, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+      propertyPath: m_text
+      value: It is time to spread the good word
       objectReference: {fileID: 0}
     - target: {fileID: 6730625344854990550, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
       propertyPath: m_OnClick.m_PersistentCalls.m_Calls.Array.size
