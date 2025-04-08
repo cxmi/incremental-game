@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: SellIndulgences
   m_EditorClassIdentifier: 
   wiName: Sell Indulgences
-  wiDescription: Gain 2 gold per worshipper
+  wiDescription: Gain 1 gold per worshipper
   wiWorshippersPerSecond: 0
   wiKarmaCost: 10000
   wiGoldCost: 0
-  goldPerPurchase: 2
+  goldPerPurchase: 1

@@ -17,3 +17,6 @@ MonoBehaviour:
   wiWorshippersPerSecond: 250
   wiKarmaCost: 8000
   wiGoldCost: 10000
+  goldPerPurchase: 0
+  goldPerSecond: 0
+  deathsPerSecond: 10

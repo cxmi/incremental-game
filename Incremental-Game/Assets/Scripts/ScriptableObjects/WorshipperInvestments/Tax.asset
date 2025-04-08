@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3eb3ac4186fb5420b9a35341188cc581, type: 3}
-  m_Name: LaunchCrusade
+  m_Name: Tax
   m_EditorClassIdentifier: 
-  wiName: Launch Crusade
-  wiDescription: Gain 1000 worshippers / sec
-  wiWorshippersPerSecond: 1000
-  wiKarmaCost: 25000
-  wiGoldCost: 18000
+  wiName: Impose taxes
+  wiDescription: Gain 1 gold per sec
+  wiWorshippersPerSecond: 0
+  wiKarmaCost: 3000
+  wiGoldCost: 0
   goldPerPurchase: 0
-  goldPerSecond: 0
-  deathsPerSecond: 50
+  goldPerSecond: 1
+  deathsPerSecond: 0

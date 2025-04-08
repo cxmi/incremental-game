@@ -13,8 +13,8 @@ MonoBehaviour:
   m_Name: TitheFollowers
   m_EditorClassIdentifier: 
   wiName: Tithe Followers
-  wiDescription: Gain 1 gold per worshipper
+  wiDescription: Gain .5 gold per worshipper
   wiWorshippersPerSecond: 0
   wiKarmaCost: 2000
   wiGoldCost: 0
-  goldPerPurchase: 1
+  goldPerPurchase: 0.5

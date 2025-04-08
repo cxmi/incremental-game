@@ -9,6 +9,8 @@ public class WorshipperIncreasers : ScriptableObject
     public float wiKarmaCost = 0f;
     public float wiGoldCost = 0f;
     public float goldPerPurchase = 0f;
+    public float goldPerSecond = 0f;
+    public float deathsPerSecond = 0f;
     
 
     //pass in (int)InvestmentType.Convert and  int[] numberOwned;

@@ -113,7 +113,7 @@ public class GameManager : MonoBehaviour
         //update the karma amount every second
         InvokeRepeating("UpdateKarma", 0f, 1f);
         InvokeRepeating("UpdateWorshippers", 0f, 1f);
-        InvokeRepeating("UpdateGold", 0f, 1f);
+        InvokeRepeating("UpdateGoldRate", 0f, 1f);
 
         
         //set karma gen rate per worshipper
@@ -156,7 +156,7 @@ public class GameManager : MonoBehaviour
         karma += karmaPerSecond;
     }
 
-    void UpdateGold()
+    void UpdateGoldRate()
     {
         gold += goldPerSecond;
     }
@@ -231,6 +231,7 @@ public class GameManager : MonoBehaviour
             case "Megachurch":
                 //wiCrucifyOwned += 1;
                 karma -= megachurchCost;
+                gold -= megachurchCost;
                 numberOwned[(int)InvestmentType.Megachurch] += 1;
                 bmanager.investment.UpdateCost(this, (int)InvestmentType.Megachurch, numberOwned);
                 bmanager.investment.UpdateGold(this, (int)InvestmentType.Megachurch, numberOwned);

@@ -12,9 +12,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3eb3ac4186fb5420b9a35341188cc581, type: 3}
   m_Name: BuildMegachurch
   m_EditorClassIdentifier: 
-  wiName: Build Megachurch
+  wiName: Build megachurch
   wiDescription: Gain 100 worshippers / sec
   wiWorshippersPerSecond: 100
   wiKarmaCost: 2000
   wiGoldCost: 5000
   goldPerPurchase: 0
+  goldPerSecond: 0
