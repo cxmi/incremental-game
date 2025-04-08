@@ -10,13 +10,13 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 3eb3ac4186fb5420b9a35341188cc581, type: 3}
-  m_Name: HolyWar
+  m_Name: Execute
   m_EditorClassIdentifier: 
-  wiName: Declare Holy War
-  wiDescription: It is time to spread the good word
-  wiWorshippersPerSecond: 0
-  wiKarmaCost: 0
+  wiName: Execute dissidents
+  wiDescription: Gain 250 worshippers per sec \n 50 deaths per sec
+  wiWorshippersPerSecond: 2000
+  wiKarmaCost: 80000
   wiGoldCost: 0
   goldPerPurchase: 0
   goldPerSecond: 0
-  deathsPerSecond: 0
+  deathsPerSecond: 666
