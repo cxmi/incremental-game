@@ -68,7 +68,13 @@ public class GameManager : MonoBehaviour
         Crucify,
         Megachurch,
         Tithe,
-        Indulgence
+        Indulgence,
+        Tax,
+        Extort,
+        Annex,
+        Crusade,
+        Execute,
+        Martyr
     }
     
     [HideInInspector] public int[] costOfNext;

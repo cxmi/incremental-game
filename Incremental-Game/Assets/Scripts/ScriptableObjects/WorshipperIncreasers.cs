@@ -21,7 +21,7 @@ public class WorshipperIncreasers : ScriptableObject
        
     }
     
-    //special just for gold generators
+    //special karma cost formula just for gold generators 
     public void UpdateCostGoldGenerator(GameManager gm, int enumPlace, int[] owned)
     {
         float costNextFloat = wiKarmaCost * Mathf.Pow(1.88f, owned[enumPlace]);
@@ -29,7 +29,7 @@ public class WorshipperIncreasers : ScriptableObject
        
     }
     
-    //gold cost
+    //update gold cost of things that require gold, like megachurches
     public void UpdateGold(GameManager gm, int enumPlace, int[] owned)
     {
         float goldNextFloat = wiGoldCost * Mathf.Pow(1.11f, owned[enumPlace]);
@@ -49,7 +49,7 @@ public class WorshipperIncreasers : ScriptableObject
 
     }
 
-
+    //updates gold amount for things that give a set, lump-sum of gold
     public void UpdateGoldTotal(GameManager gm, int enumPlace, int[] owned)
     {
         gm.gold += gm.totalWorshippers * goldPerPurchase;
