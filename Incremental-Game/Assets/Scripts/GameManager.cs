@@ -19,7 +19,7 @@ public class GameManager : MonoBehaviour
     [HideInInspector] public float karmaPerWorshipper;
     public TextMeshProUGUI karmaPerWorshipperText;
     
-    [HideInInspector] public float totalWorshippers;
+    public float totalWorshippers;
     public TextMeshProUGUI totalWorshippersText;
     //public float newWorshippers;
     
@@ -198,7 +198,7 @@ public class GameManager : MonoBehaviour
         goldPerWorshipperText.text = "Gold per worshipper: " + goldPerWorshipper.ToString("N0");
         goldPerSecondText.text = "Gold per second: " + goldPerSecond.ToString("N0");
         
-        totalDeathsText.text = "Total Deaths: " + totalDeaths.ToString("N0");
+        totalDeathsText.text = "Deaths: " + totalDeaths.ToString("N0");
         deathsPerSecondText.text = "Deaths per second: " + deathsPerSecond.ToString("N0");
 
         //worshipp.text = "Worshippers: " + totalWorshippers.ToString("N0");
