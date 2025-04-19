@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: Annex
   m_EditorClassIdentifier: 
   wiName: Annex Borders
-  wiDescription: Gain 250 worshippers per sec \n 50 deaths per sec
+  wiDescription: +250 worshippers/s | 50 deaths/s
   wiWorshippersPerSecond: 250
   wiKarmaCost: 8000
-  wiGoldCost: 10000
+  wiGoldCost: 6000
   goldPerPurchase: 0
   goldPerSecond: 0
   deathsPerSecond: 50

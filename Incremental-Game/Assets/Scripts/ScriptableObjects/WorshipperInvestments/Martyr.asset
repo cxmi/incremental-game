@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Martyr
   m_EditorClassIdentifier: 
   wiName: Enforce martyrdom
-  wiDescription: Gain 250 worshippers per sec \n 50 deaths per sec
+  wiDescription: 2000 deaths per second
   wiWorshippersPerSecond: 0
   wiKarmaCost: 80000
   wiGoldCost: 0

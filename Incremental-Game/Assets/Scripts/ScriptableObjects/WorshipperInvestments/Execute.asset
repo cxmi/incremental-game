@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Execute
   m_EditorClassIdentifier: 
   wiName: Execute dissidents
-  wiDescription: Gain 250 worshippers per sec \n 50 deaths per sec
-  wiWorshippersPerSecond: 2000
-  wiKarmaCost: 80000
+  wiDescription: 666 deaths per second
+  wiWorshippersPerSecond: 0
+  wiKarmaCost: 50000
   wiGoldCost: 0
   goldPerPurchase: 0
   goldPerSecond: 0

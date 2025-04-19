@@ -13,6 +13,8 @@ public class ActiveUIManager : MonoBehaviour
     [HideInInspector] public GameObject convertPrefab;
     [HideInInspector] public GameObject armPrefab;
     [HideInInspector] public GameObject crucifyPrefab;
+    public GameObject expandPanel;
+    public GameObject deathPanel;
     public GameObject megachurchPrefab;
     public GameObject tithePrefab;
     public GameObject indulgencePrefab;
@@ -72,19 +74,21 @@ public class ActiveUIManager : MonoBehaviour
             //TODO: uncomment this once ready to go live
             //
 
-            // if (!religionFounded)
-            // {
-            //     worshipperStats.SetActive(false);
-            //     goldStats.SetActive(false);
-            //     worshipperPanel.SetActive(false);
-            //     goldPanel.SetActive(false);
-            //
-            // }
-            // else
-            // {
-            //     worshipperStats.SetActive(true);
-            //     worshipperPanel.SetActive(true);
-            // }
+            if (!religionFounded)
+            {
+                worshipperStats.SetActive(false);
+                goldStats.SetActive(false);
+                worshipperPanel.SetActive(false);
+                goldPanel.SetActive(false);
+                expandPanel.SetActive(false);
+                deathPanel.SetActive(false);
+            
+            }
+            else
+            {
+                worshipperStats.SetActive(true);
+                worshipperPanel.SetActive(true);
+            }
 
             //end TODO
 

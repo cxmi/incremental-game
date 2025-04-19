@@ -60,4 +60,9 @@ public class WorshipperIncreasers : ScriptableObject
     {
         gm.goldPerSecond = gm.goldPerSecond + goldPerSecond;
     }
+
+    public void UpdateDeathsPerSecond(GameManager gm, int enumPlace, int[] owned)
+    {
+        gm.deathsPerSecond = gm.deathsPerSecond + deathsPerSecond;
+    }
 }

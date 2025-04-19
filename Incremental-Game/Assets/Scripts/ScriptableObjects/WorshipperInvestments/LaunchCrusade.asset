@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: LaunchCrusade
   m_EditorClassIdentifier: 
   wiName: Launch Crusade
-  wiDescription: Gain 1000 worshippers / sec
+  wiDescription: +1000 worshippers/sec | 200 deaths/sec
   wiWorshippersPerSecond: 1000
   wiKarmaCost: 25000
-  wiGoldCost: 12000
+  wiGoldCost: 8000
   goldPerPurchase: 0
   goldPerSecond: 0
   deathsPerSecond: 200

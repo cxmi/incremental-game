@@ -153,10 +153,12 @@ public class GameManager : MonoBehaviour
         extortText.text = "Cost: " + extortCost.ToString() + " karma";
         
         annexCost = scriptObjectManager.scAnnex.wiKarmaCost;
-        annexText.text = "Cost: " + annexCost.ToString() + " karma";
+        annexGoldCost = scriptObjectManager.scAnnex.wiGoldCost;
+        annexText.text = "Cost: " + annexCost.ToString() + " karma & " + annexGoldCost.ToString() + " gold";
         
         crusadeCost = scriptObjectManager.scCrusade.wiKarmaCost;
-        crusadeText.text = "Cost: " + crusadeCost.ToString() + " karma";
+        crusadeGoldCost = scriptObjectManager.scCrusade.wiGoldCost;
+        crusadeText.text = "Cost: " + crusadeCost.ToString() + " karma & " + crusadeGoldCost.ToString() + " gold";
         
         executeCost = scriptObjectManager.scExecute.wiKarmaCost;
         executeText.text = "Cost: " + executeCost.ToString() + " karma";
@@ -169,6 +171,7 @@ public class GameManager : MonoBehaviour
         InvokeRepeating("UpdateKarma", 0f, 1f);
         InvokeRepeating("UpdateWorshippers", 0f, 1f);
         InvokeRepeating("UpdateGoldRate", 0f, 1f);
+        InvokeRepeating("UpdateDeaths", 0f, 1f);
 
         
         //set karma gen rate per worshipper
@@ -194,6 +197,9 @@ public class GameManager : MonoBehaviour
         goldText.text = "Gold: " + gold.ToString("N0");
         goldPerWorshipperText.text = "Gold per worshipper: " + goldPerWorshipper.ToString("N0");
         goldPerSecondText.text = "Gold per second: " + goldPerSecond.ToString("N0");
+        
+        totalDeathsText.text = "Total Deaths: " + totalDeaths.ToString("N0");
+        deathsPerSecondText.text = "Deaths per second: " + deathsPerSecond.ToString("N0");
 
         //worshipp.text = "Worshippers: " + totalWorshippers.ToString("N0");
 
@@ -210,6 +216,7 @@ public class GameManager : MonoBehaviour
     {
         karma += karmaPerSecond;
     }
+    
 
     void UpdateGoldRate()
     {
@@ -222,6 +229,14 @@ public class GameManager : MonoBehaviour
         totalWorshippers += worshippersPerSecond;
     }
 
+    void UpdateDeaths()
+    {
+        if (totalWorshippers >= 0)
+        {
+            totalDeaths += deathsPerSecond;
+            totalWorshippers = totalWorshippers - deathsPerSecond;
+        }
+    }
     void BuyWithKarma()
     {
         //karma -= costOfNext;
@@ -337,7 +352,55 @@ public class GameManager : MonoBehaviour
                 extortCost = costOfNext[(int)InvestmentType.Extort];
                 extortText.text = "Cost: " + extortCost.ToString() + " karma";
                 break;
-            
+            case "Annex":
+                karma -= annexCost;
+                gold -= annexGoldCost;
+                numberOwned[(int)InvestmentType.Annex] += 1;
+                bmanager.investment.UpdateDeathsPerSecond(this, (int)InvestmentType.Annex, numberOwned);
+                bmanager.investment.UpdateKarmaPerSecond(this, (int)InvestmentType.Annex, numberOwned);
+                bmanager.investment.UpdateCost(this, (int)InvestmentType.Annex, numberOwned);
+                bmanager.investment.UpdateGold(this, (int)InvestmentType.Annex, numberOwned);
+                annexGoldCost = goldCostOfNext[(int)InvestmentType.Annex];
+                annexCost = costOfNext[(int)InvestmentType.Annex];
+                annexText.text = "Cost: " + annexCost.ToString() + " karma & " 
+                                 + annexGoldCost.ToString() + " gold";
+                
+                break;
+            case "Crusade":
+                karma -= crusadeCost;
+                gold -= crusadeGoldCost;
+                numberOwned[(int)InvestmentType.Crusade] += 1;
+                bmanager.investment.UpdateDeathsPerSecond(this, (int)InvestmentType.Crusade, numberOwned);
+                bmanager.investment.UpdateKarmaPerSecond(this, (int)InvestmentType.Crusade, numberOwned);
+                bmanager.investment.UpdateCost(this, (int)InvestmentType.Crusade, numberOwned);
+                bmanager.investment.UpdateGold(this, (int)InvestmentType.Crusade, numberOwned);
+                crusadeGoldCost = goldCostOfNext[(int)InvestmentType.Crusade];
+                crusadeCost = costOfNext[(int)InvestmentType.Crusade];
+                crusadeText.text = "Cost: " + crusadeCost.ToString() + " karma & " 
+                                   + crusadeGoldCost.ToString() + " gold";
+                
+                break;
+            case "Execute":
+                karma -= executeCost;
+                numberOwned[(int)InvestmentType.Execute] += 1;
+                bmanager.investment.UpdateDeathsPerSecond(this, (int)InvestmentType.Execute, numberOwned);
+                bmanager.investment.UpdateKarmaPerSecond(this, (int)InvestmentType.Execute, numberOwned);
+                bmanager.investment.UpdateCost(this, (int)InvestmentType.Execute, numberOwned);
+
+                executeCost = costOfNext[(int)InvestmentType.Execute];
+                executeText.text = "Cost: " + executeCost.ToString() + " karma";
+                
+                break;
+            case "Martyr":
+                karma -= martyrCost;
+                numberOwned[(int)InvestmentType.Martyr] += 1;
+                bmanager.investment.UpdateDeathsPerSecond(this, (int)InvestmentType.Martyr, numberOwned);
+                bmanager.investment.UpdateKarmaPerSecond(this, (int)InvestmentType.Martyr, numberOwned);
+                bmanager.investment.UpdateCost(this, (int)InvestmentType.Martyr, numberOwned);
+                martyrCost = costOfNext[(int)InvestmentType.Martyr];
+                martyrText.text = "Cost: " + martyrCost.ToString() + " karma";
+                
+                break;
             default:
                 break;
         }
