@@ -36,6 +36,26 @@ public class SOManager : MonoBehaviour
     public TextMeshProUGUI indulgenceTitle;
     public TextMeshProUGUI indulgenceDescription;
     
+    public WorshipperIncreasers scTax;
+    public TextMeshProUGUI taxTitle;
+    public TextMeshProUGUI taxDescription;
+    
+    public WorshipperIncreasers scExtort;
+    public TextMeshProUGUI extortTitle;
+    public TextMeshProUGUI extortDescription;
+    
+    public WorshipperIncreasers scAnnex;
+    public TextMeshProUGUI annexTitle;
+    public TextMeshProUGUI annexDescription;
+    
+    public WorshipperIncreasers scExecute;
+    public TextMeshProUGUI executeTitle;
+    public TextMeshProUGUI executeDescription;
+    
+    public WorshipperIncreasers scMartyr;
+    public TextMeshProUGUI martyrTitle;
+    public TextMeshProUGUI martyrDescription;
+    
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Awake()
@@ -49,6 +69,9 @@ public class SOManager : MonoBehaviour
         crucifyTitle.text = scObCrucify.wiName;
         crucifyDescription.text = scObCrucify.wiDescription;
         
+        crusadeTitle.text = scCrusade.wiName;
+        crusadeDescription.text = scCrusade.wiDescription;
+        
         megachurchTitle.text = scObMegachurch.wiName;
         megachurchDescription.text = scObMegachurch.wiDescription;
 
@@ -57,6 +80,21 @@ public class SOManager : MonoBehaviour
         
         indulgenceTitle.text = scIndulgence.wiName;
         indulgenceDescription.text = scIndulgence.wiDescription;
+        
+        taxTitle.text = scTax.wiName;
+        taxDescription.text = scTax.wiDescription;
+        
+        extortTitle.text = scExtort.wiName;
+        extortDescription.text = scExtort.wiDescription;
+        
+        annexTitle.text = scAnnex.wiName;
+        annexDescription.text = scAnnex.wiDescription;
+        
+        executeTitle.text = scExecute.wiName;
+        executeDescription.text = scExecute.wiDescription;
+        
+        martyrTitle.text = scMartyr.wiName;
+        martyrDescription.text = scMartyr.wiDescription;
         
 
 

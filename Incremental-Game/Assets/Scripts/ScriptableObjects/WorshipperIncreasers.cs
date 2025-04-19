@@ -55,4 +55,9 @@ public class WorshipperIncreasers : ScriptableObject
         gm.gold += gm.totalWorshippers * goldPerPurchase;
         //gm.goldPerSecond = gm.goldPerSecond + goldPerPurchase * gm.totalWorshippers;
     }
+
+    public void UpdateGoldPerSecond(GameManager gm, int enumPlace, int[] owned)
+    {
+        gm.goldPerSecond = gm.goldPerSecond + goldPerSecond;
+    }
 }

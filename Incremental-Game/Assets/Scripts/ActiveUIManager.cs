@@ -4,6 +4,7 @@ using UnityEngine.UI;
 public class ActiveUIManager : MonoBehaviour
 {
     private bool religionFounded = false;
+
     
     public GameObject startReligion;
     [HideInInspector] public GameObject worshipperStats;
@@ -54,135 +55,142 @@ public class ActiveUIManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        //---------PANEL HIDE LOGIC----------
-        
-        //hide start religion until karma reaches 5
-        if (gm.karma >= 5 && !religionFounded)
-        {
-            startReligion.SetActive(true);
-        }
-        else
-        {
-            startReligion.SetActive(false);
-        }
-        
-        //HIDE panels until religion is founded
-        //TODO: uncomment this once ready to go live
-        //
-        
-        // if (!religionFounded)
-        // {
-        //     worshipperStats.SetActive(false);
-        //     goldStats.SetActive(false);
-        //     worshipperPanel.SetActive(false);
-        //     goldPanel.SetActive(false);
-        //
-        // }
-        // else
-        // {
-        //     worshipperStats.SetActive(true);
-        //     worshipperPanel.SetActive(true);
-        // }
-        
-        //end TODO
-        
-        //------------GATING LOGIC-----------
-        if (gm.numberOwned[(int)GameManager.InvestmentType.Convert] > 1 || seenArm)
-        {
-            armPrefab.SetActive(true);
-            seenArm = true;
-        }
-        else
-        {
-            armPrefab.SetActive(false);
-        }
-        
-        
-        if (gm.numberOwned[(int)GameManager.InvestmentType.Arm] > 1 
-            || gm.karma >= gm.crucifyCost 
-            || seenCrucify)
-        {
-            crucifyPrefab.SetActive(true);
-            seenCrucify = true;
-        }
-        else
-        {
-            crucifyPrefab.SetActive(false);
-        }
-        
-        //show megachurch and reveal gold panel
-        if (gm.numberOwned[(int)GameManager.InvestmentType.Crucify] > 0 
-            || gm.karma >= gm.megachurchCost
-            || seenMegachurch)
-        {
-            megachurchPrefab.SetActive(true);
-            seenMegachurch = true;
-            goldPanel.SetActive(true);
-        }
-        else
-        {
-            megachurchPrefab.SetActive(false);
-            //uncomment below when NOT testing
-            
-            //goldPanel.SetActive(false);
-        }
-        
-        
+   
+            //---------PANEL HIDE LOGIC----------
 
-        
-  
-        
-        //----------BUTTON ACTIVATION LOGIC----------
-        
-        //convert
-        if (gm.karma < gm.convertCost)
-        {
-            convertButton.interactable = false;
-        }
-        else
-        {
-            convertButton.interactable = true;
-        }
-        
-        //arm
-        if (gm.karma < gm.armCost)
-        {
-            armButton.interactable = false;
-        }
-        else
-        {
-            armButton.interactable = true;
-        }
-        
-        //crucify
-        if (gm.karma < gm.crucifyCost)
-        {
-            crucifyButton.interactable = false;
-        }
-        else
-        {
-            crucifyButton.interactable = true;
-        }
-        
-                
-        //megachurch
-        if (gm.karma < gm.megachurchCost || gm.gold < gm.megachurchCost)
-        {
-            megachurchButton.interactable = false;
-        }
-        else
-        {
-            megachurchButton.interactable = true;
-        }
-        
-        
-        
-        
-        
+            //hide start religion until karma reaches 5
+            if (gm.karma >= 5 && !religionFounded)
+            {
+                startReligion.SetActive(true);
+            }
+            else
+            {
+                startReligion.SetActive(false);
+            }
+
+            //HIDE panels until religion is founded
+            //TODO: uncomment this once ready to go live
+            //
+
+            // if (!religionFounded)
+            // {
+            //     worshipperStats.SetActive(false);
+            //     goldStats.SetActive(false);
+            //     worshipperPanel.SetActive(false);
+            //     goldPanel.SetActive(false);
+            //
+            // }
+            // else
+            // {
+            //     worshipperStats.SetActive(true);
+            //     worshipperPanel.SetActive(true);
+            // }
+
+            //end TODO
+
+            //------------GATING LOGIC-----------
+            if (gm.numberOwned[(int)GameManager.InvestmentType.Convert] > 1 || seenArm)
+            {
+                armPrefab.SetActive(true);
+                seenArm = true;
+            }
+            else
+            {
+                armPrefab.SetActive(false);
+            }
+
+
+            if (gm.numberOwned[(int)GameManager.InvestmentType.Arm] > 1
+                || gm.karma >= gm.crucifyCost
+                || seenCrucify)
+            {
+                crucifyPrefab.SetActive(true);
+                seenCrucify = true;
+            }
+            else
+            {
+                crucifyPrefab.SetActive(false);
+            }
+
+            //show megachurch and reveal gold panel
+            if (gm.numberOwned[(int)GameManager.InvestmentType.Crucify] > 0
+                || gm.karma >= gm.megachurchCost
+                || seenMegachurch)
+            {
+                megachurchPrefab.SetActive(true);
+                seenMegachurch = true;
+                goldPanel.SetActive(true);
+            }
+            else
+            {
+                megachurchPrefab.SetActive(false);
+                //uncomment below when NOT testing
+
+                //goldPanel.SetActive(false);
+            }
+
+
+
+
+
+
+            //----------BUTTON ACTIVATION LOGIC----------
+
+            //convert
+            if (gm.karma < gm.convertCost)
+            {
+                convertButton.interactable = false;
+            }
+            else
+            {
+                convertButton.interactable = true;
+            }
+
+            //arm
+            if (gm.karma < gm.armCost)
+            {
+                armButton.interactable = false;
+            }
+            else
+            {
+                armButton.interactable = true;
+            }
+
+            //crucify
+            if (gm.karma < gm.crucifyCost)
+            {
+                crucifyButton.interactable = false;
+            }
+            else
+            {
+                crucifyButton.interactable = true;
+            }
+
+
+            //megachurch
+            if (gm.karma < gm.megachurchCost || gm.gold < gm.megachurchCost)
+            {
+                megachurchButton.interactable = false;
+            }
+            else
+            {
+                megachurchButton.interactable = true;
+            }
+
+
+
     }
     public void StartReligion()
     {
         religionFounded = true;
         startReligion.SetActive(false);
     }
+
+    public void DeclareWar()
+    {
+        //tbd
+    }
+
+
+
 }

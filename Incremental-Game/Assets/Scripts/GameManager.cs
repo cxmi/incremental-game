@@ -10,6 +10,11 @@ public class GameManager : MonoBehaviour
     
     [HideInInspector] public float karmaPerSecond;
     public TextMeshProUGUI karmaPerSecondText;
+
+    public float deathsPerSecond;
+    public float totalDeaths;
+    public TextMeshProUGUI totalDeathsText;
+    public TextMeshProUGUI deathsPerSecondText;
     
     [HideInInspector] public float karmaPerWorshipper;
     public TextMeshProUGUI karmaPerWorshipperText;
@@ -141,6 +146,25 @@ public class GameManager : MonoBehaviour
         indulgenceGoldAddition = scriptObjectManager.scIndulgence.goldPerPurchase;
         indulgenceText.text = "Cost: " + indulgenceCost.ToString() + " karma";
         
+        taxCost = scriptObjectManager.scTax.wiKarmaCost;
+        taxText.text = "Cost: " + taxCost.ToString() + " karma";
+        
+        extortCost = scriptObjectManager.scExtort.wiKarmaCost;
+        extortText.text = "Cost: " + extortCost.ToString() + " karma";
+        
+        annexCost = scriptObjectManager.scAnnex.wiKarmaCost;
+        annexText.text = "Cost: " + annexCost.ToString() + " karma";
+        
+        crusadeCost = scriptObjectManager.scCrusade.wiKarmaCost;
+        crusadeText.text = "Cost: " + crusadeCost.ToString() + " karma";
+        
+        executeCost = scriptObjectManager.scExecute.wiKarmaCost;
+        executeText.text = "Cost: " + executeCost.ToString() + " karma";
+        
+        martyrCost = scriptObjectManager.scMartyr.wiKarmaCost;
+        martyrText.text = "Cost: " + martyrCost.ToString() + " karma";
+        
+        
         //update the karma amount every second
         InvokeRepeating("UpdateKarma", 0f, 1f);
         InvokeRepeating("UpdateWorshippers", 0f, 1f);
@@ -164,7 +188,7 @@ public class GameManager : MonoBehaviour
         karmaPerSecondText.text = "Karma per second: " + karmaPerSecond.ToString("N0");
         karmaText.text = "Karma: " + karma.ToString("N0");
         
-        totalWorshippersText.text = "Worshippers: " + totalWorshippers.ToString("N0");
+        totalWorshippersText.text = "Total Worshippers: " + totalWorshippers.ToString("N0");
         worshippersPerSecondText.text = "Worshippers per second: " + worshippersPerSecond.ToString("N0");
         
         goldText.text = "Gold: " + gold.ToString("N0");
@@ -297,6 +321,23 @@ public class GameManager : MonoBehaviour
 
 
                 break;
+            case "Tax":
+                karma -= taxCost;
+                numberOwned[(int)InvestmentType.Tax] += 1;
+                bmanager.investment.UpdateGoldPerSecond(this, (int)InvestmentType.Tax, numberOwned);
+                bmanager.investment.UpdateCostGoldGenerator(this, (int)InvestmentType.Tax, numberOwned);
+                taxCost = costOfNext[(int)InvestmentType.Tax];
+                taxText.text = "Cost: " + taxCost.ToString() + " karma";
+                break;
+            case "Extort":
+                karma -= extortCost;
+                numberOwned[(int)InvestmentType.Extort] += 1;
+                bmanager.investment.UpdateGoldPerSecond(this, (int)InvestmentType.Extort, numberOwned);
+                bmanager.investment.UpdateCostGoldGenerator(this, (int)InvestmentType.Extort, numberOwned);
+                extortCost = costOfNext[(int)InvestmentType.Extort];
+                extortText.text = "Cost: " + extortCost.ToString() + " karma";
+                break;
+            
             default:
                 break;
         }
