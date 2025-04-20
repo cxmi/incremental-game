@@ -1694,6 +1694,11 @@ MonoBehaviour:
   m_ChildScaleWidth: 0
   m_ChildScaleHeight: 0
   m_ReverseArrangement: 0
+--- !u!1 &137405010 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7745961628133702159, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+  m_PrefabInstance: {fileID: 939337475}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1001 &160199986
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2798,8 +2803,15 @@ MonoBehaviour:
   expandPanel: {fileID: 93935674}
   deathPanel: {fileID: 2121146947}
   megachurchPrefab: {fileID: 515798242}
-  tithePrefab: {fileID: 0}
-  indulgencePrefab: {fileID: 0}
+  tithePrefab: {fileID: 1134394030}
+  indulgencePrefab: {fileID: 1528738322}
+  taxPrefab: {fileID: 1159386254}
+  extortPrefab: {fileID: 1281113123}
+  annexPrefab: {fileID: 137405010}
+  crusadePrefab: {fileID: 983229589}
+  holyWarPrefab: {fileID: 1807334542}
+  executePrefab: {fileID: 520080021}
+  martyrPrefab: {fileID: 1668776464}
   goldPanel: {fileID: 906701823}
 --- !u!4 &331118797
 Transform:
@@ -3227,6 +3239,11 @@ MonoBehaviour:
 GameObject:
   m_CorrespondingSourceObject: {fileID: 7745961628133702159, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
   m_PrefabInstance: {fileID: 854197569}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &520080021 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7745961628133702159, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+  m_PrefabInstance: {fileID: 1101067773}
   m_PrefabAsset: {fileID: 0}
 --- !u!1 &631317461
 GameObject:
@@ -5559,6 +5576,11 @@ RectTransform:
   m_AnchoredPosition: {x: 0, y: 0}
   m_SizeDelta: {x: 0, y: 0}
   m_Pivot: {x: 0, y: 0}
+--- !u!1 &983229589 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7745961628133702159, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+  m_PrefabInstance: {fileID: 160199986}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &994284043
 GameObject:
   m_ObjectHideFlags: 0
@@ -6220,6 +6242,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1107559216}
   m_CullTransparentMesh: 1
+--- !u!1 &1134394030 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7745961628133702159, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+  m_PrefabInstance: {fileID: 1329647794}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1144785665
 GameObject:
   m_ObjectHideFlags: 0
@@ -6560,6 +6587,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1159386254 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7745961628133702159, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+  m_PrefabInstance: {fileID: 1382140725}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1167183065
 GameObject:
   m_ObjectHideFlags: 0
@@ -7158,6 +7190,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f4688fdb7df04437aeb418b961361dc5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+--- !u!1 &1281113123 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7745961628133702159, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+  m_PrefabInstance: {fileID: 724735445}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1297015698
 GameObject:
   m_ObjectHideFlags: 0
@@ -8106,6 +8143,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1426191813}
   m_CullTransparentMesh: 1
+--- !u!1 &1528738322 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7745961628133702159, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+  m_PrefabInstance: {fileID: 43102542}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1536773549 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2353207203362590580, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
@@ -8449,6 +8491,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1634714486}
   m_CullTransparentMesh: 1
+--- !u!1 &1668776464 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7745961628133702159, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+  m_PrefabInstance: {fileID: 25350955}
+  m_PrefabAsset: {fileID: 0}
 --- !u!114 &1670285781 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 2353207203362590580, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
@@ -9079,6 +9126,11 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1781158511}
   m_CullTransparentMesh: 1
+--- !u!1 &1807334542 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 7745961628133702159, guid: 7e4e82b1167a1439fa34fe117c7551b4, type: 3}
+  m_PrefabInstance: {fileID: 61071067}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1830374919
 GameObject:
   m_ObjectHideFlags: 0
