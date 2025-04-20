@@ -1,4 +1,5 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.UI;
@@ -7,6 +8,8 @@ public class GameManager : MonoBehaviour
 {
     public float karma;
     public TextMeshProUGUI karmaText;
+    public GameObject millionCanvas;
+    public GameObject endCanvas;
     
     [HideInInspector] public float karmaPerSecond;
     public TextMeshProUGUI karmaPerSecondText;
@@ -117,6 +120,12 @@ public class GameManager : MonoBehaviour
     //public float wiArmOwned = 0;
     //public GameObject wiCrucify;
     //public float wiConvertOwned = 0;
+    
+    private bool hasFlashedOnce = false;
+    private bool hasFlashedTwice = false;
+
+    public bool gameEnded = false;
+
 
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
@@ -187,6 +196,30 @@ public class GameManager : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
+        //DEBUG
+
+        // if (Input.GetKeyDown(KeyCode.X))
+        // {
+        //     StartCoroutine(FlashScreen());
+        //
+        // }
+        //END DEBUG
+        
+        //flash the scary million screen when you get to a threshold of deaths
+        
+        if (totalDeaths >= 100000 && totalDeaths <= 400000 && !hasFlashedOnce)
+        {
+            StartCoroutine(FlashScreen());
+            hasFlashedOnce = true;
+        }
+        if (totalDeaths >= 500000 && !hasFlashedTwice)
+        {
+            StartCoroutine(FlashScreen());
+            hasFlashedTwice = true;
+        }
+        
+        
+        
         
         karmaPerSecondText.text = "Karma per second: " + karmaPerSecond.ToString("N0");
         karmaText.text = "Karma: " + karma.ToString("N0");
@@ -201,15 +234,20 @@ public class GameManager : MonoBehaviour
         totalDeathsText.text = "Deaths: " + totalDeaths.ToString("N0");
         deathsPerSecondText.text = "Deaths per second: " + deathsPerSecond.ToString("N0");
 
-        //worshipp.text = "Worshippers: " + totalWorshippers.ToString("N0");
-
+    
         
+        //end game when 1 million deaths
+
+        if (totalDeaths >= 1000000)
+        {
+            gameEnded = true;
+        }
+
+        if (gameEnded)
+        {
+            EndGame();
+        }
         
- 
-
-        //buy logic
-
-        //karmaPerSecond = numberOwned[(int)InvestmentType.Convert];
     }
 
     void UpdateKarma()
@@ -231,7 +269,7 @@ public class GameManager : MonoBehaviour
 
     void UpdateDeaths()
     {
-        if (totalWorshippers >= 0)
+        if (totalWorshippers >= deathsPerSecond)
         {
             totalDeaths += deathsPerSecond;
             totalWorshippers = totalWorshippers - deathsPerSecond;
@@ -419,4 +457,23 @@ public class GameManager : MonoBehaviour
     //     clickedButtonParent = clickedButton.transform.parent.name;
     //     //Debug.Log(clickedButtonParent);
     // }
+
+    IEnumerator FlashScreen()
+    {
+        //flash million canvas
+        for (int i = 0; i < 4; i++)
+        {
+            millionCanvas.SetActive(true);
+
+            yield return new WaitForSeconds(0.1f);
+            millionCanvas.SetActive(false);
+            yield return new WaitForSeconds(0.1f); 
+        }
+
+    }
+
+    private void EndGame()
+    {
+        endCanvas.SetActive(true);
+    }
 }

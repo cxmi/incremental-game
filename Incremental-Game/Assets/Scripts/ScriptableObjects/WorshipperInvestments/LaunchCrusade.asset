@@ -15,8 +15,8 @@ MonoBehaviour:
   wiName: Launch Crusade
   wiDescription: +1000 worshippers/sec | 200 deaths/sec
   wiWorshippersPerSecond: 1000
-  wiKarmaCost: 25000
-  wiGoldCost: 8000
+  wiKarmaCost: 20000
+  wiGoldCost: 7000
   goldPerPurchase: 0
   goldPerSecond: 0
   deathsPerSecond: 200

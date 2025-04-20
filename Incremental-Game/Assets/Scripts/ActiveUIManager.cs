@@ -174,8 +174,9 @@ public class ActiveUIManager : MonoBehaviour
                 goldPanel.SetActive(false);
             }
             
-            //show indulgences and taxes after buying Tithe
+            //show indulgences and taxes after buying Tithe, must have a megachurch too
             if (gm.numberOwned[(int)GameManager.InvestmentType.Tithe] > 0
+                && gm.numberOwned[(int)GameManager.InvestmentType.Megachurch] > 0
                 || seenTax)
             {
                 indulgencePrefab.SetActive(true);
@@ -219,6 +220,46 @@ public class ActiveUIManager : MonoBehaviour
             else
             {
                 expandPanel.SetActive(false);
+            }
+            
+            //after declaring war, and getting annex option
+            // reveal crusade after first annex
+
+            if (gm.numberOwned[(int)GameManager.InvestmentType.Annex] > 0
+                || seenCrusade)
+            {
+                crusadePrefab.SetActive(true);
+                seenCrusade = true;
+            }
+            else
+            {
+                crusadePrefab.SetActive(false);
+            }
+        
+            // reveal execute after first crusade
+
+            if (gm.numberOwned[(int)GameManager.InvestmentType.Crusade] > 0
+                || seenExecute)
+            {
+                executePrefab.SetActive(true);
+                seenExecute = true;
+            }
+            else
+            {
+                executePrefab.SetActive(false);
+            }
+            
+            //reveal martyr after first execute
+
+            if (gm.numberOwned[(int)GameManager.InvestmentType.Execute] > 0
+                || seenMartyr)
+            {
+                martyrPrefab.SetActive(true);
+                seenMartyr = true;
+            }
+            else
+            {
+                martyrPrefab.SetActive(false);
             }
             
             
@@ -281,7 +322,10 @@ public class ActiveUIManager : MonoBehaviour
             }
             else
             {
-                titheButton.interactable = true;
+                if (gm.totalWorshippers > 0)
+                {
+                    titheButton.interactable = true;
+                }
             }
             
             //indulgence
@@ -292,7 +336,10 @@ public class ActiveUIManager : MonoBehaviour
             }
             else
             {
-                indulgenceButton.interactable = true;
+                if (gm.totalWorshippers > 0)
+                {
+                    indulgenceButton.interactable = true;
+                }
             }
             
             //tax
@@ -373,6 +420,10 @@ public class ActiveUIManager : MonoBehaviour
     public void DeclareWar()
     {
         startedHolyWar = true;
+        annexPrefab.SetActive(true);
+        deathPanel.SetActive(true);
+
+
     }
 
 

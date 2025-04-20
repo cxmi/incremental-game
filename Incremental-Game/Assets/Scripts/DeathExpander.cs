@@ -21,7 +21,7 @@ public class DeathExpander : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gm.totalDeaths >= 5000)
+        if (gm.totalDeaths >= 25000)
         {
             StartCoroutine(AnimateDeath());
         }

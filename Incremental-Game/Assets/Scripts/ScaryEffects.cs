@@ -8,16 +8,21 @@ public class ScaryEffects : MonoBehaviour
     public float duration = 6f;
     public float startSpacing = 0f;
     public float endSpacing = 100f;
+
+    public GameManager gm;
     // Start is called once before the first execution of Update after the MonoBehaviour is created
     void Start()
     {
-        StartCoroutine(AnimateTextSpacing());
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        if (gm.gameEnded)
+        {
+            StartCoroutine(AnimateTextSpacing());
+
+        }
     }
 
     private IEnumerator AnimateTextSpacing()

@@ -16,6 +16,7 @@ MonoBehaviour:
   wiDescription: Gain 100 worshippers / sec
   wiWorshippersPerSecond: 100
   wiKarmaCost: 2000
-  wiGoldCost: 5000
+  wiGoldCost: 3000
   goldPerPurchase: 0
   goldPerSecond: 0
+  deathsPerSecond: 0
