@@ -461,7 +461,7 @@ public class GameManager : MonoBehaviour
     IEnumerator FlashScreen()
     {
         //flash million canvas
-        for (int i = 0; i < 4; i++)
+        for (int i = 0; i < 6; i++)
         {
             millionCanvas.SetActive(true);
 
