@@ -55,7 +55,7 @@ public class ActiveUIManager : MonoBehaviour
     private bool seenExtort = false;
     private bool seenAnnex = false;
     private bool seenCrusade = false;
-    private bool startHolyWar = false;
+    private bool startedHolyWar = false;
     private bool seenExecute = false;
     private bool seenMartyr = false;
 
@@ -89,6 +89,8 @@ public class ActiveUIManager : MonoBehaviour
         crusadePrefab.SetActive(false);
         executePrefab.SetActive(false);
         martyrPrefab.SetActive(false);
+        holyWarPrefab.SetActive(false);
+        annexPrefab.SetActive(false);
 
         
     }
@@ -197,6 +199,26 @@ public class ActiveUIManager : MonoBehaviour
             else
             {
                 extortPrefab.SetActive(false);
+            }
+            
+            //show war panel after extorting once
+
+            if (gm.numberOwned[(int)GameManager.InvestmentType.Extort] > 0)
+            {
+                if (!startedHolyWar)
+                {
+                    holyWarPrefab.SetActive(true);
+                }
+                else
+                {
+                    holyWarPrefab.SetActive(false);
+
+                }
+                expandPanel.SetActive(true);
+            }
+            else
+            {
+                expandPanel.SetActive(false);
             }
             
             
@@ -350,7 +372,7 @@ public class ActiveUIManager : MonoBehaviour
 
     public void DeclareWar()
     {
-        //tbd
+        startedHolyWar = true;
     }
 
 
