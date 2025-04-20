@@ -14,7 +14,7 @@ public class NotEnoughScript : MonoBehaviour
     // Update is called once per frame
     void Update()
     {
-        if (gm.totalWorshippers <= 0)
+        if (gm.totalWorshippers <= gm.deathsPerSecond)
         {
             notEnoughText.text = "not enough worshippers to kill!";
         }
