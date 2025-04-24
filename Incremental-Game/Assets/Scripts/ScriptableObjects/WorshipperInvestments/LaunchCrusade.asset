@@ -19,4 +19,4 @@ MonoBehaviour:
   wiGoldCost: 7000
   goldPerPurchase: 0
   goldPerSecond: 0
-  deathsPerSecond: 200
+  deathsPerSecond: 666
